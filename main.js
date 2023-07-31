@@ -1,3 +1,9 @@
+// Get the current year
+const currentYear = new Date().getFullYear();
+
+// Update the content of the span element with the current year
+document.getElementById('currentYear').innerText = currentYear;
+
 // change nav style on scroll
 window.addEventListener('scroll', () => {
 	document
