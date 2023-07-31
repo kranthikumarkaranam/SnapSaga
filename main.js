@@ -60,8 +60,25 @@ const closeNav = () => {
 	closeNavBtn.style.display = 'none';
 };
 
-closeNavBtn.addEventListener('click', closeNav);
+function isMobile() {
+	return window.innerWidth <= 1024;
+}
 
-nav.querySelectorAll('li a').forEach((navLink) => {
-	navLink.addEventListener('click', closeNav);
-});
+const mobileMode = isMobile();
+
+if (mobileMode) {
+	closeNavBtn.addEventListener('click', () => {
+		closeNav();
+	});
+
+	// Attach the closeNav function to all the navigation links for mobile mode
+	nav.querySelectorAll('li a').forEach((navLink) => {
+		navLink.addEventListener('click', () => {
+			closeNav();
+		});
+	});
+} else {
+	nav.querySelectorAll('li a').forEach((navLink) => {
+		navLink.removeEventListener('click', closeNav);
+	});
+}
